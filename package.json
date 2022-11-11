@@ -1,0 +1,45 @@
+{
+  "name": "code",
+  "ewid": 59643,
+  "accountkey": "F-AC-3337080:1-2RBL",
+  "propertyhostname": "jucot.akamaidemos.com",
+  "section": "default",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "ew-versions": "akamai ew lv $npm_package_ewid --section $npm_package_section --accountkey $npm_package_accountkey",
+    "set-version": "yarn version",
+    "build": "run-s bundle rollup tar",
+    "bundle": "mkdir -p ./dist && echo \"{\\n\\t\\\"edgeworker-version\\\":\\\"${npm_package_version}\\\",\\n\\t\\\"description\\\":\\\"${npm_package_description}\\\"\\n}\" > ./dist/bundle.json",
+    "rollup": "rollup -c",
+    "tar": "cd ./dist && touch bundle.tgz && rm bundle.tgz && tar -czvf bundle.tgz *",
+    "upload": "akamai ew upload --bundle ./dist/bundle.tgz $npm_package_ewid --section $npm_package_section --accountkey $npm_package_accountkey",
+    "push-staging": "akamai ew av $npm_package_ewid staging $npm_package_version --section $npm_package_section --accountkey $npm_package_accountkey",
+    "secret": "akamai edgeworkers secret",
+    "token": "akamai edgeworkers auth --expiry 720 $npm_package_propertyhostname --section $npm_package_section --accountkey $npm_package_accountkey"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transformIgnorePatterns": [
+      "node_modules/(?!edgeworkers-jest-mocks/__mocks__)"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "node_modules/edgeworkers-jest-mocks/__mocks__"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "edgeworkers-jest-mocks": "^1.0.11",
+    "rollup": "^2.70.1",
+    "yarn-run-all": "^3.1.1"
+  }
+}
