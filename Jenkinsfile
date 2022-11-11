@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-        stage('Unit testing') {
+        stage('TEST') {
           steps {
             sh 'yarn run test'
         }
