@@ -10,7 +10,7 @@ pipeline {
 
     stage('BUILD') {
       when {
-        branch 'lab/set-version'
+        branch 'main'
       }
       post {
         failure {
