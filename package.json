@@ -4,7 +4,7 @@
   "accountkey": "F-AC-3337080:1-2RBL",
   "propertyhostname": "jucot.akamaidemos.com",
   "section": "default",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "",
   "main": "main.js",
   "directories": {
@@ -18,7 +18,7 @@
     "bundle": "mkdir -p ./dist && echo \"{\\n\\t\\\"edgeworker-version\\\":\\\"${npm_package_version}\\\",\\n\\t\\\"description\\\":\\\"${npm_package_description}\\\"\\n}\" > ./dist/bundle.json",
     "rollup": "rollup -c",
     "tar": "cd ./dist && touch bundle.tgz && rm bundle.tgz && tar -czvf bundle.tgz *",
-    "upload": "akamai ew upload --bundle ./dist/bundle.tgz $npm_package_ewid --section $npm_package_section --accountkey $npm_package_accountkey",
+    "upload": "akamai ew upload --debug --bundle ./dist/bundle.tgz $npm_package_ewid --section $npm_package_section --accountkey $npm_package_accountkey",
     "push-staging": "akamai ew av $npm_package_ewid staging $npm_package_version --section $npm_package_section --accountkey $npm_package_accountkey",
     "secret": "akamai edgeworkers secret",
     "token": "akamai edgeworkers auth --expiry 720 $npm_package_propertyhostname --section $npm_package_section --accountkey $npm_package_accountkey"
