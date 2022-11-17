@@ -41,8 +41,8 @@ pipeline {
       }
       steps {
         
-            sh 'yarn run upload --edgerc ${edgerc}'
-            sh 'yarn run push-staging --edgerc ${edgerc}'
+            sh 'yarn run upload --edgerc ${edgerc} --debug'
+            sh 'yarn run push-staging --edgerc ${edgerc} --debug'
       }
     }
 
