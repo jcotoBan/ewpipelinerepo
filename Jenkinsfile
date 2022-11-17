@@ -40,14 +40,9 @@ pipeline {
 
       }
       steps {
-        retry(count: 3) {
-          timeout(time: 30, unit: 'MINUTES') {
+        
             sh 'yarn run upload --edgerc ${edgerc}'
             sh 'yarn run push-staging --edgerc ${edgerc}'
-          }
-
-        }
-
       }
     }
 
