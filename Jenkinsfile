@@ -39,7 +39,7 @@ pipeline {
               steps {
                 sh 'akamai list'
                 sh 'akamai install edgeworkers'
-                sh "yarn run upload"
+                sh "yarn run upload --edgerc ${edgerc}"
               }
             }
 
