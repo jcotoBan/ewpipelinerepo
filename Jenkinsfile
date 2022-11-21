@@ -39,12 +39,19 @@ pipeline {
         }
 
       }
-      steps {
-          
-            sh 'ls ./dist'
-            sh 'yarn run upload --edgerc ${edgerc}'
-            sh 'yarn run push-staging --edgerc ${edgerc}'
-      }
+            
+            stage('Upload'){
+              steps {
+                sh 'yarn run upload --edgerc ${edgerc}'
+              }
+            }
+            
+            stage('Push'){
+              steps {
+                sh 'yarn run push-staging --edgerc ${edgerc}'
+              }
+            }  
+      
     }
 
   }
