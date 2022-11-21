@@ -5,7 +5,6 @@ pipeline {
           steps {
             sh 'yarn run test'
         }
-
       }
 
     stage('BUILD') {
@@ -30,33 +29,26 @@ pipeline {
     }
 
     stage('DEPLOY') {
+
       when {
         branch 'main'
       }
-      post {
-        failure {
-          echo 'Could not upload bundle to edgeworkers'
-        }
-
-      }
-            
-            stage('Upload'){
+            stage('Upload') {
               steps {
                 sh 'yarn run upload --edgerc ${edgerc}'
               }
             }
-            
-            stage('Push'){
+
+            stage('Push') {
               steps {
                 sh 'yarn run push-staging --edgerc ${edgerc}'
               }
-            }  
-      
-    }
+            }
+      }
 
   }
     environment {
     edgerc = credentials('edgerc')
   }
-  
+
 }
