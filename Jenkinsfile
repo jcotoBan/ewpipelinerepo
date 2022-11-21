@@ -38,7 +38,7 @@ pipeline {
             stage('Upload') {
               steps {
                 sh 'akamai list'
-                sh "akamai edgeworkers"
+                sh "akew"
               }
             }
 
