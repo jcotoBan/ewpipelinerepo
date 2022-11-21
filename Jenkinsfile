@@ -33,7 +33,7 @@ pipeline {
       when {
         branch 'main'
       }
-      stages {
+      parallel {
             stage('Upload') {
               steps {
                 sh 'yarn run upload --edgerc ${edgerc}'
