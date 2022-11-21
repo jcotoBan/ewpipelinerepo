@@ -40,7 +40,8 @@ pipeline {
 
       }
       steps {
-        
+          
+            sh 'ls ./dist'
             sh 'yarn run upload --edgerc ${edgerc}'
             sh 'yarn run push-staging --edgerc ${edgerc}'
       }
