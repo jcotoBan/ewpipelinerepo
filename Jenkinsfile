@@ -33,6 +33,7 @@ pipeline {
       when {
         branch 'main'
       }
+      stages {
             stage('Upload') {
               steps {
                 sh 'yarn run upload --edgerc ${edgerc}'
@@ -44,6 +45,7 @@ pipeline {
                 sh 'yarn run push-staging --edgerc ${edgerc}'
               }
             }
+     }
       }
 
   }
