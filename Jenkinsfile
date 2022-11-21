@@ -21,6 +21,7 @@ pipeline {
         retry(count: 3) {
           timeout(time: 30, unit: 'MINUTES') {
             sh 'yarn run build'
+            sh 'cat ./dist/bundle.json'
           }
 
         }
