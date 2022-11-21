@@ -38,7 +38,7 @@ pipeline {
             stage('Upload') {
               steps {
                 sh 'akamai list'
-                sh 'akamai edgeworkers upload --bundle ./dist/bundle.tgz --accountkey F-AC-3337080:1-2RBL 59643'
+                sh 'akamai edgeworkers upload'
               }
             }
 
