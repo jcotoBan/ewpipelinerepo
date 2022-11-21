@@ -34,7 +34,6 @@ pipeline {
       when {
         branch 'main'
       }
-      parallel {
             stage('Upload') {
               steps {
                 sh 'akamai list'
@@ -48,7 +47,6 @@ pipeline {
                 sh 'yarn run push-staging --edgerc ${edgerc}'
               }
             }
-     }
       }
 
   }
