@@ -37,7 +37,7 @@ pipeline {
       parallel {
             stage('Upload') {
               steps {
-                sh 'yarn run upload --edgerc ${edgerc}'
+                sh 'akamai edgeworkers upload --debug --bundle ./dist/bundle.tgz 59643 --section default --accountkey F-AC-3337080:1-2RBL'
               }
             }
 
